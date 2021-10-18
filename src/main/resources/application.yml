@@ -1,0 +1,10 @@
+getnet:
+  endpoint: https://api-sandbox.getnet.com.br
+  oauth:
+    basic: clientid:clientsecretb64
+
+feign:
+  client:
+    config:
+      default:
+        loggerLevel: full

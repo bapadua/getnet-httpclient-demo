@@ -1,10 +1,15 @@
+spring:
+  cache:
 getnet:
   endpoint: https://api-sandbox.getnet.com.br
   oauth:
-    basic: clientid:clientsecretb64
+    client-id: ----------------------
+    client-secret: --------------------------
+    seller-id: ----------------------
 
 feign:
   client:
     config:
       default:
         loggerLevel: full
+

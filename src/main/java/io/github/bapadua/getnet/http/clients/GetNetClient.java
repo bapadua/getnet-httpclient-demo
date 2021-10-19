@@ -29,7 +29,6 @@ public interface GetNetClient {
     );
 
     class Configuration {
-
         @Bean
         Encoder feignFormEncoder(ObjectFactory<HttpMessageConverters> converters) {
             return new SpringFormEncoder(new SpringEncoder(converters));

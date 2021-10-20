@@ -25,5 +25,7 @@ public class GetnetToken {
     @JsonProperty("expires_in")
     private Long expire;
 
+    private String sellerId;
+
     private LocalDateTime expireAt;
 }

@@ -9,12 +9,10 @@ import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.Base64;
@@ -33,11 +31,21 @@ public class OAuthToken {
     private String clientId;
     @Value("${getnet.oauth.client-secret}")
     private String clientSecret;
+    @Value("${getnet.oauth.seller-id}")
+    private String sellerId;
 
     private final GetNetClient client;
 
+    public String accessToken() {
+        return String.format("Bearer %s", token().getToken());
+    }
+
+    public String sellerId() {
+        return token().getSellerId();
+    }
+
     @Cacheable("token")
-    public GetnetToken getToken() {
+    public GetnetToken token() {
         log.info("Authenticating on Getnet");
         return setExpire(client.oauthToken(getBasic(clientId, clientSecret)));
     }
@@ -53,6 +61,7 @@ public class OAuthToken {
                 .expire(token.getExpire())
                 .expireAt(LocalDateTime.now().plusSeconds(token.getExpire()))
                 .token(token.getToken())
+                .sellerId(sellerId)
                 .build();
     }
 

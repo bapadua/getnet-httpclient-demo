@@ -1,5 +1,6 @@
 package io.github.bapadua.getnet.controllers;
 
+import io.github.bapadua.getnet.config.OAuthToken;
 import io.github.bapadua.getnet.domain.customers.CustomerResponseDTO;
 import io.github.bapadua.getnet.services.CustomerService;
 import lombok.RequiredArgsConstructor;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/customer")
+@RequestMapping("/api/v1/customers")
 @RequiredArgsConstructor
 public class CustomerController {
 

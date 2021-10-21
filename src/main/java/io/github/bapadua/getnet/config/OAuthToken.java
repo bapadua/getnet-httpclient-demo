@@ -25,7 +25,7 @@ import java.util.Base64;
 @EnableScheduling
 public class OAuthToken {
 
-    private final int EXPIRE_TIME = 1000 * 60 * 60;
+    private final int EXPIRE_TIME = 1000 * 60 * 59;
 
     @Value("${getnet.oauth.client-id}")
     private String clientId;
@@ -44,7 +44,7 @@ public class OAuthToken {
         return token().getSellerId();
     }
 
-    @Cacheable("token")
+    @Cacheable(cacheNames = "token:")
     public GetnetToken token() {
         log.info("Authenticating on Getnet");
         return setExpire(client.oauthToken(getBasic(clientId, clientSecret)));

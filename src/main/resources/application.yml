@@ -1,11 +1,17 @@
 spring:
   cache:
+    type: redis
+  redis:
+    host: localhost
+    port: 6379
+    password: ${REDIS_PWD}
+
 getnet:
   endpoint: https://api-sandbox.getnet.com.br
   oauth:
-    client-id: ----------------------
-    client-secret: --------------------------
-    seller-id: ----------------------
+    client-id: ${CLIENT_ID}
+    client-secret: ${CLIENT_SECRET}
+    seller-id: ${SELLER_ID}
 
 feign:
   client:

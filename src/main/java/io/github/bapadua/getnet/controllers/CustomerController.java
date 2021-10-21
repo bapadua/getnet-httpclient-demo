@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/api/v1/customers")
 @RequiredArgsConstructor
@@ -20,7 +22,7 @@ public class CustomerController {
     private final CustomerService customerService;
 
     @PostMapping
-    public ResponseEntity<CustomerRequestDTO> saveCustomer(@RequestBody CustomerRequestDTO customer) {
+    public ResponseEntity<CustomerRequestDTO> saveCustomer(@RequestBody @Valid CustomerRequestDTO customer) {
         return ResponseEntity.ok(customerService.save(customer));
     }
 

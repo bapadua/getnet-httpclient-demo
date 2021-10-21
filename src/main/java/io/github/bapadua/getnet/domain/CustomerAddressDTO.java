@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 @Setter
@@ -23,6 +24,7 @@ public class CustomerAddressDTO implements Serializable {
     private String city;
     private String state;
     private String country;
+    @NotBlank(message = "informe o CEP")
     @JsonProperty("postal_code")
     private String postalCode;
 

@@ -15,16 +15,15 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import javax.validation.Valid;
 
-import static org.springframework.http.MediaType.APPLICATION_FORM_URLENCODED_VALUE;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @FeignClient(url = "${getnet.endpoint}", name = "getnetCustomer")
 public interface GetnetCustomerClient {
 
-    @PostMapping(value = "/v1/customers", consumes = APPLICATION_FORM_URLENCODED_VALUE)
-    @Headers({"Content-Type: application/x-www-form-urlencoded"})
+    @PostMapping(value = "/v1/customers", consumes = APPLICATION_JSON_VALUE)
+    @Headers({"Content-Type: application/json"})
     @ResponseStatus(HttpStatus.OK)
-    Object saveCustomer(
+    CustomerRequestDTO saveCustomer(
             @RequestBody @Valid CustomerRequestDTO request,
             @RequestHeader("Authorization") String token,
             @RequestHeader("seller_id") String sellerId

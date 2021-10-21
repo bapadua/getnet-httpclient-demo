@@ -55,6 +55,6 @@ public class CustomerRequestDTO implements Serializable {
 
     private String observation;
 
-    private CustomerAddressDTO address;
+    private transient CustomerAddressDTO address;
 
 }

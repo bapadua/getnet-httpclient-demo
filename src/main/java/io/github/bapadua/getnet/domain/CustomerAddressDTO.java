@@ -7,12 +7,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 @Setter
 @Getter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CustomerAddressDTO {
+public class CustomerAddressDTO implements Serializable {
 
     private String street;
     private String number;

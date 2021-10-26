@@ -1,10 +1,11 @@
-spring:
+server:
+  port: 8081
   cache:
     type: redis
   redis:
     host: localhost
     port: 6379
-    password: ${REDIS_PWD}
+    password: redis
 
 getnet:
   endpoint: https://api-sandbox.getnet.com.br
@@ -18,4 +19,3 @@ feign:
     config:
       default:
         loggerLevel: full
-

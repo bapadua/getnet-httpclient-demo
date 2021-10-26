@@ -8,6 +8,7 @@ import io.github.bapadua.getnet.config.CoreFeignConfiguration;
 import io.github.bapadua.getnet.domain.request.GetnetToken;
 import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.cloud.openfeign.support.SpringEncoder;
 import org.springframework.context.annotation.Bean;
@@ -21,6 +22,7 @@ import static org.springframework.http.MediaType.APPLICATION_FORM_URLENCODED_VAL
 @FeignClient(url = "${getnet.endpoint}", name = "getnet", configuration = CoreFeignConfiguration.class)
 public interface GetNetClient {
 
+    @Cacheable("token")
     @PostMapping(value = "/auth/oauth/v2/token?scope=oob&grant_type=client_credentials", consumes = APPLICATION_FORM_URLENCODED_VALUE)
     @ResponseStatus(HttpStatus.OK)
     @Headers({"Content-Type: application/x-www-form-urlencoded"})

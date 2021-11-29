@@ -1,8 +1,8 @@
 package io.github.bapadua.getnet.controllers;
 
-import io.github.bapadua.getnet.domain.cards.CardDTO;
-import io.github.bapadua.getnet.domain.cards.CardTokenDTO;
-import io.github.bapadua.getnet.services.CardService;
+import io.github.bapadua.getnet.domain.VaultStoreCardResponse;
+import io.github.bapadua.getnet.domain.request.CustomerCardRequest;
+import io.github.bapadua.getnet.services.VaultService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -17,12 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class CardController {
 
-    private final CardService cardService;
+    private final VaultService service;
 
     @PostMapping
-    public ResponseEntity<CardTokenDTO> tokenize(final @RequestBody CardDTO card) {
-        log.info("tokenizando cartão: {}", card.getCardNumber().substring(0, 4));
-        return ResponseEntity.ok(cardService.tokenize(card));
+    public ResponseEntity<VaultStoreCardResponse> save(@RequestBody CustomerCardRequest request) {
+        return ResponseEntity.ok(service.save(request));
     }
-
 }

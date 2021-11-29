@@ -1,4 +1,4 @@
-package io.github.bapadua.getnet.domain.cards;
+package io.github.bapadua.getnet.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -14,9 +14,12 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CardDTO implements Serializable {
+public class VaultStoreCardResponse implements Serializable {
+    private static final long serialVersionUID = -1L;
 
-    @JsonProperty("card_number")
-    private String cardNumber;
-    
+    @JsonProperty("card_id")
+    private String cardId;
+
+    @JsonProperty("number_token")
+    private String numberToken;
 }

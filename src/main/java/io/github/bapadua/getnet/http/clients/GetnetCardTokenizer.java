@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@FeignClient(url = "${getnet.endpoint}", name = "getnetcards")
-public interface GetNetCardsClient {
+@FeignClient(url = "${getnet.endpoint}", name = "getnettokenizer")
+public interface GetnetCardTokenizer {
 
     @PostMapping(value = "/v1/tokens/card",
             consumes = MediaType.APPLICATION_JSON_VALUE,

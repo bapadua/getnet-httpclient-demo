@@ -1,14 +1,8 @@
 server:
   port: 8081
-  cache:
-    type: redis
-  redis:
-    host: localhost
-    port: 6379
-    password: redis
 
 getnet:
-  endpoint: https://api-sandbox.getnet.com.br
+  endpoint: ${API_URI}
   oauth:
     client-id: ${CLIENT_ID}
     client-secret: ${CLIENT_SECRET}
